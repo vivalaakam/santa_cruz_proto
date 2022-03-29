@@ -4,14 +4,43 @@ package santa_cruz;
 
 service ExerciseService {
   rpc GetExercise (GetExerciseRequest) returns (Exercise);
+  rpc CreateExercise (CreateExerciseRequest) returns (Exercise);
+  rpc UpdateExercise (UpdateExerciseRequest) returns (Exercise);
+  rpc DeleteExercise (DeleteExerciseRequest) returns (DeleteExerciseResponse);
+  rpc GetExercises (GetExercisesRequest) returns (GetExercisesResponse);
 }
 
 message GetExerciseRequest {
   int32 id = 1;
 }
 
+message GetExercisesRequest {}
+
+message GetExercisesResponse {
+  repeated Exercise exercises = 1;
+}
+
+message CreateExerciseRequest {
+  string name = 1;
+  string description = 2;
+}
+
+message UpdateExerciseRequest {
+  int32 id = 1;
+  optional string name = 2;
+  optional string description = 3;
+}
+
+message DeleteExerciseRequest {
+  int32 id = 1;
+}
+
+message DeleteExerciseResponse {}
+
 message Exercise {
   int32 id = 1;
-  string name = 2;
-  string description = 3;
+  string created_at = 2;
+  string updated_at = 3;
+  string name = 4;
+  string description = 5;
 }
