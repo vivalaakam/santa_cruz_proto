@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package santa_cruz;
+
+service WorkoutSetService {
+  rpc GetWorkoutSet (GetWorkoutSetRequest) returns (WorkoutSet);
+  rpc CreateWorkoutSet (CreateWorkoutSetRequest) returns (WorkoutSet);
+  rpc UpdateWorkoutSet (UpdateWorkoutSetRequest) returns (WorkoutSet);
+  rpc DeleteWorkoutSet (DeleteWorkoutSetRequest) returns (DeleteWorkoutSetResponse);
+  rpc GetWorkoutSets (GetWorkoutSetsRequest) returns (GetWorkoutSetsResponse);
+}
+
+message GetWorkoutSetRequest {
+  int32 id = 1;
+}
+
+message GetWorkoutSetsRequest {
+  int32 workout_id = 1;
+}
+
+message GetWorkoutSetsResponse {
+  repeated WorkoutSet workout_sets = 1;
+}
+
+message CreateWorkoutSetRequest {
+  int32 workout_id = 1;
+  int32 position = 2;
+}
+
+message UpdateWorkoutSetRequest {
+  int32 id = 1;
+  optional string comment = 2;
+  optional int32 position = 3;
+}
+
+message DeleteWorkoutSetRequest {
+  int32 id = 1;
+}
+
+message DeleteWorkoutSetResponse {}
+
+message WorkoutSet {
+  message Type {
+    message Circle {}
+
+    message Exercise {
+      int32 exercise_id = 1;
+    }
+
+    oneof type {
+      Circle circle = 1;
+      Exercise exercise = 2;
+    }
+  }
+
+  int32 id = 1;
+  int32 workout_id = 2;
+  int32 position = 3;
+  Type type = 4;
+  string comment = 5;
+  string created_at = 6;
+  string updated_at = 7;
+}
