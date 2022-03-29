@@ -42,6 +42,7 @@ message DeleteWorkoutSetRequest {
 message DeleteWorkoutSetResponse {}
 
 message WorkoutSetType {
+  message Unknown {}
   message Circle {}
 
   message Exercise {
@@ -49,8 +50,9 @@ message WorkoutSetType {
   }
 
   oneof type {
-    Circle circle = 1;
-    Exercise exercise = 2;
+    Unknown unknown = 1;
+    Circle circle = 2;
+    Exercise exercise = 3;
   }
 }
 
