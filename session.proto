@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package santa_cruz;
+
+service SessionService {
+  rpc DeleteSession (DeleteSessionRequest) returns (DeleteSessionResponse);
+  rpc GetSessions (GetSessionsRequest) returns (GetSessionsResponse);
+}
+
+message GetSessionsRequest {}
+
+message GetSessionsResponse {
+  repeated Session sessions = 1;
+}
+
+message DeleteSessionRequest {
+  int32 id = 1;
+}
+
+message DeleteSessionResponse {}
+
+message Session {
+  int32 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 user_id = 4;
+  string device_name = 5;
+}

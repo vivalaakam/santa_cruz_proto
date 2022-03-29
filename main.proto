@@ -6,3 +6,6 @@ import "exercise.proto";
 import "workout.proto";
 import "workout_set.proto";
 import "workout_repeat.proto";
+import "session.proto";
+import "user.proto";
+import "auth.proto";
