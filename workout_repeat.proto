@@ -2,10 +2,52 @@ syntax = "proto3";
 
 package santa_cruz;
 
+service WorkoutRepeatService {
+  rpc GetWorkoutRepeat (GetWorkoutRepeatRequest) returns (WorkoutRepeat);
+  rpc CreateWorkoutRepeat (CreateWorkoutRepeatRequest) returns (WorkoutRepeat);
+  rpc UpdateWorkoutRepeat (UpdateWorkoutRepeatRequest) returns (WorkoutRepeat);
+  rpc DeleteWorkoutRepeat (DeleteWorkoutRepeatRequest) returns (DeleteWorkoutRepeatResponse);
+  rpc GetWorkoutRepeats (GetWorkoutRepeatsRequest) returns (GetWorkoutRepeatsResponse);
+}
+
+message GetWorkoutRepeatRequest {
+  int32 id = 1;
+}
+
+message GetWorkoutRepeatsRequest {}
+
+message GetWorkoutRepeatsResponse {
+  repeated WorkoutRepeat workout_repeats = 1;
+}
+
+message CreateWorkoutRepeatRequest {
+  int32 workout_set_id = 1;
+  int32 exercise_id = 2;
+  optional int32 repeats = 3;
+  optional double weight = 4;
+  optional double time = 5;
+}
+
+message UpdateWorkoutRepeatRequest {
+  int32 id = 1;
+  optional int32 repeats = 2;
+  optional double weight = 3;
+  optional double time = 4;
+}
+
+message DeleteWorkoutRepeatRequest {
+  int32 id = 1;
+}
+
+message DeleteWorkoutRepeatResponse {}
+
 message WorkoutRepeat {
   int32 id = 1;
-  int32 workout_set_id = 2;
-  int32 exercise_id = 3;
-  int32 repeats = 4;
-  optional double weight = 5;
+  string created_at = 2;
+  string updated_at = 3;
+  int32 workout_set_id = 4;
+  int32 exercise_id = 5;
+  int32 repeats = 6;
+  optional double weight = 7;
+  optional double time = 8;
 }
