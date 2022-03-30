@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package santa_cruz;
+
+message IdQuery {
+  message Unknown {}
+
+  message Eq {
+    int32 value = 1;
+  }
+
+  message In {
+    repeated int32 value = 1;
+  }
+
+  oneof value {
+    Unknown unknown = 1;
+    Eq eq = 2;
+    In in = 3;
+  }
+}

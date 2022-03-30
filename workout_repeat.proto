@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package santa_cruz;
 
+import "query.proto";
+
 service WorkoutRepeatService {
   rpc GetWorkoutRepeat (GetWorkoutRepeatRequest) returns (WorkoutRepeat);
   rpc CreateWorkoutRepeat (CreateWorkoutRepeatRequest) returns (WorkoutRepeat);
@@ -14,7 +16,9 @@ message GetWorkoutRepeatRequest {
   int32 id = 1;
 }
 
-message GetWorkoutRepeatsRequest {}
+message GetWorkoutRepeatsRequest {
+  IdQuery workout_set_id = 1;
+}
 
 message GetWorkoutRepeatsResponse {
   repeated WorkoutRepeat workout_repeats = 1;
