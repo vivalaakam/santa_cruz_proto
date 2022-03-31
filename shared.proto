@@ -6,5 +6,5 @@ import "google/protobuf/descriptor.proto";
 
 extend google.protobuf.ServiceOptions {
   optional string table = 51235;
-  optional string main = 51236;
+  optional string main = 51234;
 }
