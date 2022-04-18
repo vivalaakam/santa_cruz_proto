@@ -2,12 +2,7 @@ syntax = "proto3";
 
 package santa_cruz;
 
-import "shared.proto";
-
 service ExerciseService {
-  option (table) = "exercises";
-  option (main) = "Exercise";
-
   rpc GetExercise (GetExerciseRequest) returns (Exercise);
   rpc CreateExercise (CreateExerciseRequest) returns (Exercise);
   rpc UpdateExercise (UpdateExerciseRequest) returns (Exercise);

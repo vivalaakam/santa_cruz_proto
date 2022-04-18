@@ -26,7 +26,10 @@ message GetWorkoutsResponse {
   repeated Workout workouts = 1;
 }
 
-message CreateWorkoutRequest {}
+message CreateWorkoutRequest {
+  WorkoutStatus status = 1;
+  string day = 2;
+}
 
 message UpdateWorkoutRequest {
   int32 id = 1;
@@ -44,10 +47,10 @@ message DeleteWorkoutResponse {}
 
 message Workout {
   int32 id = 1;
-  WorkoutStatus status = 2;
-  string day = 3;
-  string created_at = 4;
-  string updated_at = 5;
+  string created_at = 2;
+  string updated_at = 3;
+  WorkoutStatus status = 4;
+  string day = 5;
   string comment = 6;
   int32 rate = 7;
 }

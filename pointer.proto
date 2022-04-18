@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package santa_cruz;
+
+message Pointer {
+  message Exercise{
+    int32 id = 1;
+  }
+}
